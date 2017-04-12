@@ -1,0 +1,38 @@
+# Basic
+title: chenhhs
+description: Nice Meeting You
+avatarTitle: Lynn
+avatarDesc: 上海 / 前端
+url: ""
+
+# Social
+social:
+    github: chenhuhus
+    mail: lynn1187@163.com
+    twitter: chenhhs
+    instagram: chenhuhus
+    pinterest: chenhhs
+
+# Jekyll
+permalink: /:year/:month/:title/
+highlighter: rouge
+
+textColor: #FF0000
+
+# supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
+cover_color: clear
+
+# The blog button should not be removed.
+blog_button:
+    title: Home
+
+# Navigation buttons in the front page.s
+nav:
+    - {title: Article, description: article, url: '/article'}
+    - {title: Tags, description: tags, url: '/tags'}
+    - {title: About, description: about, url: '/about'}
+
+# Pagination
+gems: [jekyll-paginate]
+paginate: 10
+paginate_path: "page/:num/"
