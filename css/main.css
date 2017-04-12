@@ -340,7 +340,7 @@ img::-moz-selection {
 
   .excerpt {
     // border-left: 3px solid #458B74;
-    margin-bottom: 0;
+    margin: 10px 0;
     padding-left: 4px;
     // margin-right: 10px;
     font-size: .9em;
@@ -831,12 +831,6 @@ img::-moz-selection {
     display: inline-block;
   }
 
-  .post-list .time-wrap {
-    margin: 0;
-    text-align: right;
-    height: 12px;
-    line-height: 12px;
-  }
   .post-list li {
     float: left;
     padding: 20px 10px;
@@ -910,9 +904,12 @@ img::-moz-selection {
 }
 
 .post-list__meta--date {
-  margin-right: 4px;
-  color: #666;
+  padding: 0 8px;
+  color: #42B983;
   font-size: 12px;
+  font-weight: bold;
+  float: left;
+  border: 1px solid #42B983;
 
 }
 
@@ -929,12 +926,17 @@ img::-moz-selection {
   color: #8A97A1;
 }
 .post-list__meta--tags-right {
-  color: #fff;
+  color: #42B983;
   font-size: 0.9em;
   display: inline-block;
   padding: 0 4px;
-  background-color: #42B983;
   font-weight: bold;
+  border: 1px solid #42B983;
+}
+
+.post-list__meta--tags-right:hover {
+  background-color: #42B983;
+  color: #fff;
 }
 
 .post-list-icon-mate {
@@ -944,7 +946,6 @@ img::-moz-selection {
   padding: 0 10px 0 10px;
   padding-top: 0px;
   padding-bottom: 0px;
-  margin-top: 2px;
   float: left;
 }
 

@@ -10,13 +10,15 @@ layout: default
       <h2 class="post-list__post-title post-title"><a href="{{ post.url }}" title="访问 {{ post.title }}">{{ post.title }}</a></h2>
       <p class="excerpt">{{ post.content | strip_html | strip_newlines | truncate: 150 }}&hellip;</p>
       <div class="post-list__meta">
-      <p class="time-wrap"><time datetime="{{post.date | date: date_to_xmlschema}}" class="post-list__meta--date date">
-          {{ post.date | date: "%F"}}</time></p>
+        <time datetime="{{post.date | date: date_to_xmlschema}}" class="post-list__meta--date date">
+          {{ post.date | date: "%F"}}</time>
         <a href="/tags">
           <div class = "post-list-icon-mate">
             <span class="post-list__meta--tags-right">{{ post.tags }}</span>
           </div>
+        </a>
       </div>
+      <hr class="post-list__divider" />
     </li>
     {% endfor %}
   </ol>
