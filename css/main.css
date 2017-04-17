@@ -166,7 +166,7 @@ blockquote p:last-child {
   margin-bottom: 0; }
 
 ol, ul {
-  padding: 5px 0;
+  padding: 5px 8px;
   margin: 0 10px; }
 ol li, ul li {
   margin: 0 0 .2em 0;
@@ -193,7 +193,7 @@ code {
 
 pre {
   margin-bottom: 1.3em;
-  padding: 1em 2.5%;
+  padding: 0.4em 1.5%;
   background: #e8f2fb;
   border: 1px solid #c9e1f6;
   border-radius: 3px;
@@ -215,7 +215,7 @@ table {
   line-height: 40px;
   border: 2px solid #363636;
   width: 90%;
-  margin: 50px auto; }
+  margin: 20px 0; }
 
 thead tr:first-child {
   background-color: #E0EEEE;
@@ -460,6 +460,7 @@ img::-moz-selection {
     line-height: 30px;
     color: #444;
     font-size: 1.1em;
+    margin: 5px 0;
   }
 
   .post-meta__date span {

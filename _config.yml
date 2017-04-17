@@ -28,7 +28,7 @@ blog_button:
 
 # Navigation buttons in the front page.s
 nav:
-    - {title: Article, description: article, url: '/article'}
+    - {title: Blog, description: blog, url: '/blog'}
     - {title: Tags, description: tags, url: '/tags'}
     - {title: About, description: about, url: '/about'}
 
