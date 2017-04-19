@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "RegExp"
+title: "正则表达式的学习总结"
 date: 2017-04-17
 tag: JavaScript
 ---
@@ -217,6 +217,92 @@ lastIndex 不生效，故 **0** ，这里执行多次 lastIndex 也不会变化�
 	'a1b2c3d4'.search('2'); // 3
 	'a1b2c3d4'.search(2); // 3
 	'a1b2c3d4'.search(/2/); // 3
+	// 传入的不管是字符串还是数字，都会尝试转为正则
 	'a1b2c3d4'.search('20'); // -1
 
 ##### String.prototype.match(reg)
+
+* match() 方法将检索字符串，以找到一个or多个与 regexp 匹配的文本
+* regexp 是否有 **g 对结果影响很大**
+
+非全局
+
+* 仅在字符串中执行一次
+* 若没找到匹配文本，返回 null
+* 若找到，返回**数组**，存放：
+	1. 第一个元素存放匹配文本，其余元素存放与正则表达式的子表达式匹配的文本
+	2. 数组会增加2属性
+		* index 匹配文本的起始字符在字符串的位置
+		* input 原字符串的引用
+
+*返回和 RegExp.exec() 相同的结果*
+
+	var reg5 = /\d(\w)\d/;
+	var str = '$$1a2b3c4d5e';
+
+	var matches = str.match(reg5);
+	console.log(matches); // ["1a2", "a", index: 2, input: "$$1a2b3c4d5e"]
+	console.log(matches.index + '\t' + reg5.lastIndex); // 2	0
+
+全局
+
+* 若没找到匹配文本，返回 null
+* 若找到1or多个，返回数组
+* 数组中存放 字符串中所有匹配字串，没有 index 和 input 属性
+
+栗子
+
+	var reg6 = /\d(\w)\d/g;
+	var str = '$$1a2b3c4d5e';
+
+	var matches = str.match(reg6);
+	console.log(matches); // ["1a2", "3c4"]
+	console.log(matches.index + '\t' + reg5.lastIndex); // undefined	0
+
+##### String.prototype.split(reg)
+
+split() 方法将字符串分割成字符数组，分割可以用字符串or正则表达式
+
+	'a,b,c,d'.split(','); // ["a", "b", "c", "d"]
+
+	var names = "Harry Trump ;Fred Barney; Helen Rigby ; Bill Abel ;Chris Hand";
+	var re = /\s*;\s*/;
+	var nameList = names.split(re);
+	console.log(nameList);
+	// ["Harry Trump", "Fred Barney", "Helen Rigby", "Bill Abel", "Chris Hand"]
+
+	var myString = "Hello 1 word. Sentence number 2.";
+	var splits = myString.split(/(\d)/);
+	console.log(splits); // ["Hello ", "1", " word. Sentence number ", "2", "."]
+
+##### String.prototype.replace()
+
+	'a1b1c1'.replace('1', 'M'); // "aMb1c1"
+	'a1b1c1'.replace(/1/g, 'M'); // "aMbMcM"
+
+	'a1b2c3d4'.replace(/\d/g, function(match, index, origin){
+	  console.log(index);
+	  return parseInt(match) + 1;
+	});
+	// 1
+	// 3
+	// 5
+	// 7
+	// "a2b3c4d5"
+
+	'a1b2c3d4e5'.replace(/(\d)(\w)(\d)/g, function(match, group1, group2, group3, index, origin){
+	  console.log(match);
+	  return group1 + group3;
+	});
+	// "1b2"
+	// "3d4"
+	// "a12c34e5"
+
+* String.prototype.replace(str, replaceStr);
+* String.prototype.replace(reg, replaceStr);
+* String.prototype.replace(reg, function);
+	* function 4 个参数
+		1. 匹配字符串
+		2. 正则表达式分组内容，若没有分组则无此参数
+		3. 匹配项在字符串中 index
+		4. 原字符串
