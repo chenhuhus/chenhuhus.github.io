@@ -30,4 +30,4 @@ tag: JavaScript
 |匹配中文字符|[\u4e00-\u9fa5]||
 |匹配双字节(包括汉字在内)|[^\x00-\xff]|计算字符串的长度,双字节字符长度计2|
 
-正则表达式常常被用于表单验证，这几天整理了一个注册界面的[demo]('https://chenhuhus.github.io/validate/')，算是对正则表达式的复习吧。
+正则表达式常常被用于表单验证，这几天整理了一个注册界面的[demo](https://chenhuhus.github.io/validate/)，算是对正则表达式的复习吧。
