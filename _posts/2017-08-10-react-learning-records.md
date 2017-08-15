@@ -7,11 +7,13 @@ tag: JavaScript
 
 ##### 记录一些笔记 方便以后查阅
 
-#### ## webpack
+#### ##
 
 	webpack --watch
 	webpack-dev-server
 	webpack-dev-server --contentbase src --inline --hot  // 项目热加载 访问 http://localhost:8080/
+
+	babel-plugin-react-html-attrs ==> react中使用class 而不用必须使用className
 
 #### ## Component
 
@@ -181,3 +183,83 @@ tag: JavaScript
 ##### Refs
 
 ReactDOM.findDOMNode(component) // 不推荐
+
+##### Style
+
+`'src\js\components\header.js'`
+
+	export default class ComponentHeader extends React.Component {
+	  constructor() {
+	    super();
+	    this.state = {
+	      miniHeader: false
+	    }
+	  };
+
+	  switchHeader() {
+	    this.setState({
+	      miniHeader: !this.state.miniHeader
+	    })
+	  };
+
+	  render() {
+	    const styleComponentHeader = {
+	      header: {
+	        backgroundColor: '#eee',
+	        color: 'pink',
+	        {/*内联样式中的表达式*/}
+	        paddingTop: (this.state.miniHeader) ? '2px' : '15px',
+	        paddingBottom: '15px'
+	      }
+	    }
+
+	    return (
+	      <header onClick = {this.switchHeader.bind(this)} style={styleComponentHeader.header}>
+	        <h1>header here</h1>
+	      </header>
+	    )
+	  }
+	}
+
+这种写法会以内联样式显示，动画/hover伪类不能使用，react中不推荐这种写法，但RN中为此写法
+
+`CSS 模块化` 1. 全局污染 2. 命名混乱 3. 依赖管理不彻底 4. 无法共享变量 5. 代码压缩不彻底
+
+`'webpack.config.js'` 中配置
+
+	module: {
+	  loaders: [
+	    {
+	      test: /\.css$/,
+        loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+	    }
+	  ]
+	}
+
+`'src\js\components\footer.js'`
+
+	import footerCss from '../../css/footer.css';
+
+	export default class ComponentFooter extends React.Component {
+	  render() {
+	    return (
+	      <footer className={footerCss.miniFooter}>
+	        <h1>footer here</h1>
+	      </footer>
+	    )
+	  }
+	}
+
+`'../../css/footer.css'`
+
+	.miniFooter {
+	  background: #333;
+	  color: #fff;
+	  padding-left: 20px;
+	  padding-top: 3px;
+	  padding-bottom: 3px;
+	}
+
+	.miniFooter h1 {
+	  font-size: 15px;
+	}
