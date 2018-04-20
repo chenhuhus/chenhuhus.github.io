@@ -7,8 +7,6 @@ tag: JavaScript
 
 ##### 记录一些笔记 方便以后查阅
 
-#### ##
-
 	webpack --watch
 	webpack-dev-server
 	webpack-dev-server --contentbase src --inline --hot  // 项目热加载 访问 http://localhost:8080/
